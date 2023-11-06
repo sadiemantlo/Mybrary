@@ -1,0 +1,1 @@
+mongodb+srv://sadie:@Nahko1!@cluster0.bm0jats.mongodb.net/?retryWrites=true&w=majority
