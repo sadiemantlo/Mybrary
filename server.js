@@ -15,7 +15,13 @@ app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 app.set('layout', 'layouts/layout');
 app.use(expressLayouts);
-app.use(express.static('public'));
+app.use(express.static('public', { 
+    setHeaders: (res, path, stat) => {
+        if (path.endsWith('.js')) {
+            res.set('Content-Type', 'application/javascript');
+        }
+        }}
+    ));
 app.use(bodyParser.urlencoded({
     limit: '10mb',
     extended: false
