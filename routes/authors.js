@@ -67,13 +67,14 @@ router.get('/:id/edit', async (req, res) => {
     }
 });
 
+// Update Author Route
 router.put('/:id', async (req, res) => {
     let author;
     try {
         author = await Author.findById(req.params.id);
         author.name = req.body.name;
-        res.redirect(`/authors/${author.id}`)
         await author.save();
+        res.redirect(`/authors/${author.id}`)
     } catch (err) {
         if (author == null) {
             res.redirect('/')
